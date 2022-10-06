@@ -2,10 +2,18 @@
 <html>
 
 <head>
-    <title>
+    <!-- <title>
         Ramya's Lab6
-    </title>
+    </title> -->
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Assignment-6</title>
+    </head>
+    
 </head>
+
 <body>
     <h1>Musician guess by Ramya Devulapally</h1>
 
@@ -20,9 +28,13 @@
         <input type="button" onclick="checkGuess()" value="Check the guess">
     </form>
     <p id="result">Counter text will be displayed here !!! </p>
+    <div class="container">
+        <img src="ant.jpg" id="image" onClick="swapImage()" alt="Ant" style="width: 100px;height: 100px;">
+    </div>
     <script>
         correct = 0
         wrong = 0
+        useImage = 1
         function checkGuess() {
             console.log("Getting form values")
             age = document.getElementById("form1_age").value
@@ -37,6 +49,19 @@
                 wrong = wrong + 1
                 alert("Wrong Musician")
                 out.innerHTML = "Correct answer: " + correct + " Wrong answer: " + wrong
+            }
+        }
+        function swapImage() {
+            switch (useImage) {
+                case 1: useImage = useImage + 1
+                image.src = "velvetmites.jpg";
+                    break;
+                case 2: useImage = useImage + 1
+                    image.src = "Underwing.jpg";
+                    break;
+                case 3: useImage = useImage + 1
+                    image.src = "ant.jpg";
+                    break;
             }
         }
     </script>
