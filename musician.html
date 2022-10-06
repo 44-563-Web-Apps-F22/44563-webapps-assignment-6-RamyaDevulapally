@@ -13,66 +13,75 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
         crossorigin="anonymous"></script>
-    <title>Assignment-6</title>    
+    <title>Assignment-6</title>
+
 </head>
 
 <body>
-    <h1>Musician guess by Ramya Devulapally</h1>
+    <div class="bg-image" style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp');
+           height: 100vh;
+        ">
 
-    <h2>Getting input</h2>
-    <form>
-        <label for="form1_age">Enter the secret musician name</label>
-        <input type="password" id="form1_age" name="form1_age" min=10 max=50 step=2 value="John Lennon"> <br>
+        <h1 style="color:white">Musician guess by Ramya Devulapally
 
-        <label for="form1_nick">Guess the musician </label>
-        <input type="text" id="form1_nick" name="form1_nick" autofocus> <br>
+        </h1>
 
-        <input type="button" onclick="checkGuess()" value="Check the guess">
-    </form>
-    <p id="result">Counter number will be displayed here!!! </p>
-    <div class="container">
-        <img src="ant.jpg" id="image" onClick="swapImage()" alt="Ant" style="width: 100px;height: 100px;">
+        <h2 style="color:white">Getting input</h2>
+        <form>
+            <label for="form1_age" style="color:white">Enter the secret musician name</label>
+            <input type="password" id="form1_age" name="form1_age" min=10 max=50 step=2 value="John Lennon"> <br>
+
+            <label for="form1_nick" style="color:white">Guess the musician </label>
+            <input type="text" id="form1_nick" name="form1_nick" autofocus> <br>
+
+            <input type="button" onclick="checkGuess()" value="Check the guess">
+        </form>
+        <p id="result" style="color:white">Counter number will be displayed here!!! </p>
+        <div class="container">
+            <img src="ant.jpg" id="image" onClick="swapImage()" alt="Ant" style="width: 100px;height: 100px;">
+        </div>
+        <script>
+            correct = 0
+            wrong = 0
+            useImage = 1
+            function giveAlert() {
+                alert("Sorry, game over");
+            }
+            function checkGuess() {
+                console.log("Getting form values")
+                age = document.getElementById("form1_age").value
+                nick = document.getElementById("form1_nick").value
+                confirmed = confirm("Are these the values? " + age + " and " + nick)
+                out = document.getElementById("result")
+                if (age == nick) {
+                    alert("You got it right")
+                    correct = correct + 1
+                    out.innerHTML = "Correct answer: " + correct + " Wrong answer: " + wrong;
+                } else if (wrong >= 3) {
+                    document.getElementById("btn").onclick = giveAlert();
+                    out.innerHTML = "Correct answer: " + correct + " Wrong answer: " + wrong;
+                }
+                else {
+                    alert("Wrong Musician");
+                    wrong = wrong + 1
+                    out.innerHTML = "Correct answer: " + correct + " Wrong answer: " + wrong;
+                }
+            }
+            function swapImage() {
+                switch (useImage) {
+                    case 1: useImage = useImage + 1
+                        image.src = "velvetmites.jpg";
+                        break;
+                    case 2: useImage = useImage + 1
+                        image.src = "Underwing.jpg";
+                        break;
+                    case 3: useImage = useImage + 1
+                        image.src = "ant.jpg";
+                        break;
+                }
+            }
+        </script>
     </div>
-    <script>
-        correct = 0
-        wrong = 0
-        useImage = 1
-        function giveAlert() {
-            alert("Sorry, game over");
-        }
-        function checkGuess() {
-            console.log("Getting form values")
-            age = document.getElementById("form1_age").value
-            nick = document.getElementById("form1_nick").value
-            confirmed = confirm("Are these the values? " + age + " and " + nick)
-            out = document.getElementById("result")
-            if (age == nick) {
-                alert("You got it right")
-                correct = correct + 1
-                out.innerHTML = "Correct answer: " + correct + " Wrong answer: " + wrong;
-            } else if (wrong >= 3) {
-                document.getElementById("btn").onclick = giveAlert();              
-                out.innerHTML = "Correct answer: " + correct + " Wrong answer: " + wrong;
-            }
-            else {
-                alert("Wrong Musician");
-                wrong = wrong + 1
-                out.innerHTML = "Correct answer: " + correct + " Wrong answer: " + wrong;
-            }
-        }
-        function swapImage() {
-            switch (useImage) {
-                case 1: useImage = useImage + 1
-                image.src = "velvetmites.jpg";
-                    break;
-                case 2: useImage = useImage + 1
-                    image.src = "Underwing.jpg";
-                    break;
-                case 3: useImage = useImage + 1
-                    image.src = "ant.jpg";
-                    break;
-            }
-        }
-    </script>
 </body>
+
 </html>
